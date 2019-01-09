@@ -83,7 +83,7 @@ function turnRight(rover){
 
 function moveForward (rover) {
   if (rover.direction = 'N') {
-    return rover.y + 1
+    return rover.y = rover.y + 1
   } 
 }
 

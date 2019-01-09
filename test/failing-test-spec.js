@@ -133,7 +133,7 @@ describe('moveForward', function() {
       direction: 'N'
     } 
     moveForward(rover)
-    expect(rover.y).to.deep.equal(rover.y + 1)
+    expect(rover.y).to.deep.equal(1)
   })
 
   it('should move rover one space south when facing south', function() {
