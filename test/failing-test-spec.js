@@ -124,10 +124,29 @@ describe('turnRight', function(){
 
 
 describe('moveForward', function() {
-  var moveForward = require('../js/index')
+  var moveForward = require('../js/index').moveForward
 
-  it('should move rover one space north when facing north')
-  moveForward(rover)
-  expect(rover.y).to.equal(rover.y +1)
+  it('should move rover one space north when facing north', function(){
+    var rover = {
+      x: 0,
+      y: 0,
+      direction: 'N'
+    } 
+    moveForward(rover)
+    expect(rover.y).to.deep.equal(rover.y + 1)
+  })
+
+  it('should move rover one space south when facing south', function() {
+    var rover = {
+      x: 0,
+      y: 0,
+      direction: 'N'
+    } 
+    moveForward(rover)
+    expect(rover.y).to.deep.equal(rover.y - 1)
+  })
 })
+
+
+
 

@@ -1,9 +1,9 @@
 // Rover Object Goes Here
 // ======================
 var rover = { 
-  direction: 'N',
   x: 0,
-  y: 0
+  y: 0,
+  direction: 'N'
 };
 
 // ======================
@@ -81,6 +81,12 @@ function turnRight(rover){
 //   }
 // }
 
+function moveForward (rover) {
+  if (rover.direction = 'N') {
+    return rover.y + 1
+  } 
+}
+
 // receives a string of commands and calls the appropriate function based on the command
 function moveRover(commands) {
   for(let i=0; i < commands.length; i++){
@@ -106,3 +112,4 @@ function moveRover(commands) {
 
 module.exports.turnLeft = turnLeft;
 module.exports.turnRight = turnRight;
+module.exports.moveForward = moveForward;
