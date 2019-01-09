@@ -13,7 +13,6 @@ var directions = { 'N': 'North', 'E': 'East', 'S': 'South', 'W': 'West'};
 
 // turns rover left based on its current direction
 function turnLeft(rover){
-  console.log("turnLeft was called!");
   switch(rover.direction){
     case 'N': 
       rover.direction = 'W';
@@ -32,7 +31,6 @@ function turnLeft(rover){
 
 // turns rover right based on its current direction
 function turnRight(rover){
-  console.log("turnRight was called!");
   switch(rover.direction){
     case 'N': 
       rover.direction = 'E';
@@ -50,7 +48,6 @@ function turnRight(rover){
 }
 
 function moveForward(rover){
-  console.log("moveForward was called");
   switch(rover.direction){
     case 'N':
       if(rover.y < 1) {
@@ -105,8 +102,5 @@ function moveRover(commands) {
   //printStatus(rover);
   return 'done!';
 }
-
-var c = [l,r,m]
-console.log(moveRover(c)
 
 module.exports.turnLeft = turnLeft;

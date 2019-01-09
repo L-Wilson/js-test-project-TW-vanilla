@@ -24,7 +24,7 @@ const expect = chai.expect
 
 
 describe('turnLeft', function(){
-  var turnLeft = require("../js/index").turnLeft;
+  var turnLeft = require("../js/functions").turnLeft;
 
   it('should turn the rover from N to W', function() {
     var rover = {
@@ -35,6 +35,39 @@ describe('turnLeft', function(){
   
     turnLeft(rover)
     expect(rover.direction).to.equal('W')
+  })
+
+  it('should turn the rover from W to S', function() {
+    var rover = {
+      x: 0,
+      y: 0,
+      direction: 'W'
+    }
+  
+    turnLeft(rover)
+    expect(rover.direction).to.equal('S')
+  })
+
+  it('should turn the rover from S to E', function() {
+    var rover = {
+      x: 0,
+      y: 0,
+      direction: 'S'
+    }
+  
+    turnLeft(rover)
+    expect(rover.direction).to.equal('E')
+  })
+
+  it('should turn the rover from E to N', function() {
+    var rover = {
+      x: 0,
+      y: 0,
+      direction: 'E'
+    }
+  
+    turnLeft(rover)
+    expect(rover.direction).to.equal('N')
   })
 })
 
