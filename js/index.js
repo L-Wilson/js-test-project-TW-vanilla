@@ -6,6 +6,8 @@ var rover = {
   direction: 'N'
 };
 
+
+
 // ======================
 const xMax = 5;
 const yMax = 5;
@@ -81,10 +83,39 @@ function turnRight(rover){
 //   }
 // }
 
-function moveForward (rover) {
-  if (rover.direction = 'N') {
-    return rover.y = rover.y + 1
-  } 
+var platform = '5 5'
+
+function moveForward (rover, platform) {
+  let xArray = platform.split(' ')
+  
+  
+  switch(rover.direction){
+    case 'N':
+      rover.y += 1
+      break;
+    case 'S':
+      if(rover.y < 1) {
+        console.log('Out of bounds!')
+        break;
+      }
+      rover.y -= 1
+      break;
+    case 'E':
+      // if(rover.x = xMax) {
+      //   break;
+      // }
+      rover.x += 1
+      break;
+    case 'W':
+      if(rover.x < 1){
+        console.log('Out of bounds!')
+        break;
+      }
+      rover.x -= 1
+      break;
+    default:
+      console.log('none of those!')
+  }
 }
 
 // receives a string of commands and calls the appropriate function based on the command

@@ -125,14 +125,20 @@ describe('turnRight', function(){
 
 describe('moveForward', function() {
   var moveForward = require('../js/index').moveForward 
+  var platform
 
-  it('should move rover one space north when facing north', function(){
+  before(function() {
+    platform = '5 5'
+  });
+
+  it('should move rover one space north when facing north', function() {
     var rover = {
       x: 0,
       y: 0,
       direction: 'N'
     } 
-    moveForward(rover)
+    
+    moveForward(rover, platform)
     expect(rover.y).to.deep.equal(1)
   })
 
@@ -142,9 +148,88 @@ describe('moveForward', function() {
       y: 5,
       direction: 'S'
     } 
-    moveForward(rover)
-    expect(rover.y).to.deep.equal(-1)
+    
+    moveForward(rover, platform)
+    expect(rover.y).to.deep.equal(4)
   })
+
+  it('should move rover one space east when facing east', function() {
+    var rover = {
+      x: 0,
+      y: 0,
+      direction: 'E'
+    } 
+   
+    moveForward(rover, platform)
+    expect(rover.x).to.deep.equal(1)
+  })
+
+  it('should move rover one space west when facing west', function() {
+    var rover = {
+      x: 3,
+      y: 0,
+      direction: 'W'
+    } 
+    
+    moveForward(rover, platform)
+    expect(rover.x).to.deep.equal(2)
+  })
+
+  it('should NOT move if at the western boundary of the platform', function() {
+    var rover = {
+      x: 0,
+      y: 0,
+      direction: 'W'
+    } 
+   
+    moveForward(rover, platform)
+    expect(rover.x).to.deep.equal(0)
+  })
+
+  it('should NOT move if at the southern boundary of the platform', function() {
+    var rover = {
+      x: 0,
+      y: 0,
+      direction: 'W'
+    } 
+   
+    moveForward(rover, platform)
+    expect(rover.y).to.deep.equal(0)
+  })
+
+ it('should accept platform upper right coordinates', function() {
+  var rover = {
+    x: 0,
+    y: 0,
+    direction: 'W'
+  } 
+   
+    moveForward(rover, platform)
+    expect(platform).to.deep.equal('5 5')
+ })
+
+ it('should convert platform string to array', function() {
+  var rover = {
+    x: 0,
+    y: 0,
+    direction: 'E'
+  } 
+   
+    moveForward(rover, platform)
+    expect(platform.split(' ')).to.deep.equal(['5','5'])
+ })
+
+ 
+
+  // it('should NOT move if at the eastern boundary of the platform', function(){
+  //   var rover = {
+  //     x: 5,
+  //     y: 0,
+  //     direction: 'E'
+  //   } 
+  //   moveForward(rover, platform)
+  //   expect(rover.x).to.deep.equal(5)
+  // })
 })
 
 
