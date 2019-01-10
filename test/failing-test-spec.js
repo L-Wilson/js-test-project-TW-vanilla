@@ -123,8 +123,7 @@ describe('turnRight', function(){
 })
 
 
-
-
+// ===================== moveForward ============================================ //
 describe('moveForward', function() {
   var moveForward = require('../js/index').moveForward 
   var platform
@@ -256,5 +255,24 @@ describe('moveForward', function() {
 })
 
 
+// ===================== moveRover ============================================ //
+describe('moveRover', function(){
+  var moveRover = require('../js/index').moveRover
 
+  it('should transform the input string of commands into an array', function(){
+    var commands = 'LMR'
+    expect(moveRover(commands)).to.deep.equal(['L','M','R'])
+  })
 
+  it('should update rover direction from N to W', function(){
+    var rover = {
+      x: 0,
+      y: 0,
+      direction: 'N'
+    } 
+    var commands = 'LMR'
+    moveRover(commands)
+    expect(rover.direction).to.deep.equal('W')
+  })
+    
+})

@@ -50,39 +50,6 @@ function turnRight(rover){
 }
   
 
-// function moveForward(rover){
-//   switch(rover.direction){
-//     case 'N':
-//       if(rover.y < 1) {
-//         console.error('Illegal move!');
-//          break;
-//       }
-//       rover.y -= 1;
-//       break;
-//     case 'E': 
-//       if(rover.x == xMax) {
-//         console.error('Illegal move!');
-//         break;
-//       }
-//       rover.x +=1;
-//       break;
-//     case 'S':
-//       if(rover.y == yMax) {
-//         console.error('Illegal move!');
-//         break;
-//       }
-//       rover.y += 1;
-//       break;
-//     case 'W': 
-//       if(rover.x < 1) {
-//         console.error('Illegal move!');
-//         break;
-//       }
-//       rover.x -= 1;
-//       break;
-//   }
-// }
-
 // var platform = '5 5'
 
 function moveForward (rover, platform) {
@@ -122,28 +89,40 @@ function moveForward (rover, platform) {
 }
 
 // receives a string of commands and calls the appropriate function based on the command
+// function moveRover(commands) {
+//   for(let i=0; i < commands.length; i++){
+//     let command = commands[i]
+//     switch(command){
+//         case 'r': 
+//       turnRight(rover);
+//       break;
+//         case 'l': 
+//       turnLeft(rover);
+//       break;
+//       case 'm': 
+//         moveForward(rover);
+//       break;
+//       default:
+//         console.error('Illegal command: ' + command);
+//         break;
+//     }
+//   }
+//   //printStatus(rover);
+//   return 'done!';
+// }
+
 function moveRover(commands) {
-  for(let i=0; i < commands.length; i++){
-    let command = commands[i]
-    switch(command){
-        case 'r': 
-      turnRight(rover);
-      break;
-        case 'l': 
-      turnLeft(rover);
-      break;
-      case 'm': 
-        moveForward(rover);
-      break;
-      default:
-        console.error('Illegal command: ' + command);
-        break;
+  let commandsArray = commands.split('')
+  console.log(commandsArray)
+  
+  for(let i=0; i < commandsArray.length; i++) {
+    if(commandsArray[i] === 'L') {
+      turnLeft(rover)
     }
   }
-  //printStatus(rover);
-  return 'done!';
 }
 
 module.exports.turnLeft = turnLeft;
 module.exports.turnRight = turnRight;
 module.exports.moveForward = moveForward;
+module.exports.moveRover = moveRover;
