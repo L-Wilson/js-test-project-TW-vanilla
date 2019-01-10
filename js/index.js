@@ -83,14 +83,17 @@ function turnRight(rover){
 //   }
 // }
 
-var platform = '5 5'
+// var platform = '5 5'
 
 function moveForward (rover, platform) {
-  let xArray = platform.split(' ')
-  let xMax = xArray.map(x => parseInt(x))
+  let array = platform.split(' ')
+  let maxCoords = array.map(x => parseInt(x))
   
   switch(rover.direction){
     case 'N':
+      if(rover.y === maxCoords[1]) {
+        break;
+      }
       rover.y += 1
       break;
     case 'S':
@@ -101,7 +104,7 @@ function moveForward (rover, platform) {
       rover.y -= 1
       break;
     case 'E':
-      if(rover.x = xMax[0]) {
+      if(rover.x === maxCoords[0]) {
         break;
       }
       rover.x += 1

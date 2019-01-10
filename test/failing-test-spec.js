@@ -123,13 +123,12 @@ describe('turnRight', function(){
 })
 
 
+
+
 describe('moveForward', function() {
   var moveForward = require('../js/index').moveForward 
   var platform
 
-  before(function() {
-    platform = '5 5'
-  });
 
   it('should move rover one space north when facing north', function() {
     var rover = {
@@ -137,7 +136,7 @@ describe('moveForward', function() {
       y: 0,
       direction: 'N'
     } 
-    
+    var platform = '5 5'
     moveForward(rover, platform)
     expect(rover.y).to.deep.equal(1)
   })
@@ -148,7 +147,7 @@ describe('moveForward', function() {
       y: 5,
       direction: 'S'
     } 
-    
+    var platform = '5 5'    
     moveForward(rover, platform)
     expect(rover.y).to.deep.equal(4)
   })
@@ -159,7 +158,7 @@ describe('moveForward', function() {
       y: 0,
       direction: 'E'
     } 
-   
+    var platform = '5 5'   
     moveForward(rover, platform)
     expect(rover.x).to.deep.equal(1)
   })
@@ -170,7 +169,7 @@ describe('moveForward', function() {
       y: 0,
       direction: 'W'
     } 
-    
+    var platform = '5 5'    
     moveForward(rover, platform)
     expect(rover.x).to.deep.equal(2)
   })
@@ -181,7 +180,7 @@ describe('moveForward', function() {
       y: 0,
       direction: 'W'
     } 
-   
+    var platform = '5 5'
     moveForward(rover, platform)
     expect(rover.x).to.deep.equal(0)
   })
@@ -192,7 +191,7 @@ describe('moveForward', function() {
       y: 0,
       direction: 'W'
     } 
-   
+    var platform = '5 5'
     moveForward(rover, platform)
     expect(rover.y).to.deep.equal(0)
   })
@@ -203,7 +202,7 @@ describe('moveForward', function() {
     y: 0,
     direction: 'W'
   } 
-   
+  var platform = '5 5'
     moveForward(rover, platform)
     expect(platform).to.deep.equal('5 5')
  })
@@ -214,7 +213,7 @@ describe('moveForward', function() {
     y: 0,
     direction: 'E'
   } 
-   
+  var platform = '5 5'
     moveForward(rover, platform)
     expect(platform.split(' ')).to.deep.equal(['5','5'])
  })
@@ -225,7 +224,9 @@ describe('moveForward', function() {
     y: 0,
     direction: 'E'
   } 
-   var xArray = ['5','5']
+  var platform = '5 5'
+  var xArray = ['5','5']
+
     moveForward(rover, platform)
     expect(xArray.map(x => parseInt(x))).to.deep.equal([5,5])
  })
@@ -237,9 +238,20 @@ describe('moveForward', function() {
       y: 0,
       direction: 'E'
     } 
-    
+    var platform = '5 5'
     moveForward(rover, platform)
     expect(rover.x).to.deep.equal(5)
+  })
+
+  it('should NOT move if at the northern boundary of the platform', function(){
+    var rover = {
+      x: 0,
+      y: 9,
+      direction: 'N'
+    } 
+    var platform = '5, 9'
+    moveForward(rover, platform)
+    expect(rover.y).to.deep.equal(9)
   })
 })
 
