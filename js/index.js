@@ -87,7 +87,7 @@ var platform = '5 5'
 
 function moveForward (rover, platform) {
   let xArray = platform.split(' ')
-  
+  let xMax = xArray.map(x => parseInt(x))
   
   switch(rover.direction){
     case 'N':
@@ -101,9 +101,9 @@ function moveForward (rover, platform) {
       rover.y -= 1
       break;
     case 'E':
-      // if(rover.x = xMax) {
-      //   break;
-      // }
+      if(rover.x = xMax[0]) {
+        break;
+      }
       rover.x += 1
       break;
     case 'W':

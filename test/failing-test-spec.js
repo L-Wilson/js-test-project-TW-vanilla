@@ -208,7 +208,7 @@ describe('moveForward', function() {
     expect(platform).to.deep.equal('5 5')
  })
 
- it('should convert platform string to array', function() {
+ it('should convert platform string to an array of strings', function() {
   var rover = {
     x: 0,
     y: 0,
@@ -219,17 +219,28 @@ describe('moveForward', function() {
     expect(platform.split(' ')).to.deep.equal(['5','5'])
  })
 
- 
+ it('should convert platform array to an array of integers', function() {
+  var rover = {
+    x: 0,
+    y: 0,
+    direction: 'E'
+  } 
+   var xArray = ['5','5']
+    moveForward(rover, platform)
+    expect(xArray.map(x => parseInt(x))).to.deep.equal([5,5])
+ })
 
-  // it('should NOT move if at the eastern boundary of the platform', function(){
-  //   var rover = {
-  //     x: 5,
-  //     y: 0,
-  //     direction: 'E'
-  //   } 
-  //   moveForward(rover, platform)
-  //   expect(rover.x).to.deep.equal(5)
-  // })
+ 
+  it('should NOT move if at the eastern boundary of the platform', function(){
+    var rover = {
+      x: 5,
+      y: 0,
+      direction: 'E'
+    } 
+    
+    moveForward(rover, platform)
+    expect(rover.x).to.deep.equal(5)
+  })
 })
 
 
