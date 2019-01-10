@@ -10,26 +10,6 @@ describe('A failing test', function () {
 })
 
 
-// needs to have a position
-// describe('receives the position of the rover in integers x,y and a string as the direction "N, E, S, W"', function() {
-//   var rover;
-
-//   before(function(){
-//     rover = {
-//       x: 0,
-//       y: 0,
-//       direction: 'N',
-//       position: ''
-//     }
-//   })
-
-//   it('should initialise start position', function() {
-//     expect(rover.x).to.be
-//   })
-// })
-
-
-
 describe('turnLeft', function(){
   var turnLeft = require("../js/index").turnLeft;
 
@@ -126,7 +106,6 @@ describe('turnRight', function(){
 // ===================== moveForward ============================================ //
 describe('moveForward', function() {
   var moveForward = require('../js/index').moveForward 
-  var platform
 
 
   it('should move rover one space north when facing north', function() {
@@ -259,11 +238,6 @@ describe('moveForward', function() {
 describe('moveRover', function(){
   var moveRover = require('../js/index').moveRover
 
-  it('should transform the input string of commands into an array', function(){
-    var commands = 'LMR'
-    expect(moveRover(commands)).to.deep.equal(['L','M','R'])
-  })
-
   it('should update rover direction from N to W', function(){
     var rover = {
       x: 0,
@@ -271,8 +245,19 @@ describe('moveRover', function(){
       direction: 'N'
     } 
     var commands = 'LMR'
-    moveRover(commands)
+    moveRover(commands, rover)
     expect(rover.direction).to.deep.equal('W')
+  })
+
+  it('should update rover direction from N to E', function() {
+    var rover = {
+      x: 0,
+      y: 0,
+      direction: 'N'
+    } 
+    var commands = 'LMR'
+    moveRover(commands, rover)
+    expect(rover.direction).to.deep.equal('E')
   })
     
 })
